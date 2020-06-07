@@ -16,5 +16,19 @@ def PCA(data):
     # YOUR CODE HERE
     # Hint: you may need to normalize the data before applying PCA
     # begin answer
-    #TODO
+    N, P = data.shape
+    # P-by-N
+    # data = data.T
+    # let E(row) = 0
+    mean = np.mean(data, axis=0)
+    data = data - mean
+    data = data.T
+    S = np.cov(data)
+    eigvalue, eigvector = np.linalg.eig(S)
+    # descending order
+    idx = np.argsort(-eigvalue)
+    eigvalue = eigvalue[idx]
+    eigvector = eigvector[:, idx]
+
+    return eigvalue, eigvector
     # end answer
