@@ -16,7 +16,6 @@ def knn_graph(X, k, threshold):
 
     # YOUR CODE HERE
     # begin answer
-    #TODO
     N, P = X.shape
     W = np.zeros((N, N))
     # distance matrix

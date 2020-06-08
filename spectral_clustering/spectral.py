@@ -14,7 +14,6 @@ def spectral(W, k):
     '''
     # YOUR CODE HERE
     # begin answer
-    #TODO
     D = np.diag(np.sum(W, axis=1))
     L = D - W
 
