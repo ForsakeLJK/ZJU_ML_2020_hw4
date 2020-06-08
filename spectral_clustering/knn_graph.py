@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.spatial.distance import cdist
 
 def knn_graph(X, k, threshold):
     '''
@@ -16,5 +17,17 @@ def knn_graph(X, k, threshold):
     # YOUR CODE HERE
     # begin answer
     #TODO
-    
+    N, P = X.shape
+    W = np.zeros((N, N))
+    # distance matrix
+    dist = cdist(X, X)
+    dist = np.where(dist > threshold, np.Infinity, dist)
+    # sort per row
+    idx = np.argsort(dist, axis=1)
+
+    # binary edge weights here
+    for i in range(N):
+        W[i, idx[i, 1:k+1]] = 1 
+
+    return W
     # end answer
